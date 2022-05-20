@@ -616,6 +616,7 @@ return item.slice(0,2)
 
 var joinval=perarray.map((item:any)=>{
   return item.join('-')
+
 })
 
 var lowercase=joinval.map((item:any)=>{
@@ -626,8 +627,7 @@ var  newArr: any[] = [];
 while(lowercase.length) newArr.push(lowercase.splice(0,1));
 
 
-console.log(newArr,"newArrayyyyy")
-console.log(slicevalue,"slicevalue")
+
 var length=newArr.length
 for(let i = 0;i<=length-1;i++){
   var subarray: any[]=[]
@@ -637,7 +637,7 @@ for(let i = 0;i<=length-1;i++){
   this.finelarray.push(subarray)
 
 }
-console.log(this.finelarray,"finelarray")
+
   }
   chartOptions: Options = {
     chart: {
