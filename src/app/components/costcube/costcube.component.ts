@@ -4,26 +4,29 @@ import * as Highcharts from 'highcharts';
 import { Chart } from 'highcharts';
 import HighchartsMore from 'highcharts/highcharts-more';
 import HighchartsSolidGauge from 'highcharts/modules/solid-gauge';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 
 HighchartsMore(Highcharts);
 HighchartsSolidGauge(Highcharts);
 
 @Component({
-selector: 'app-root',
-templateUrl: './app.component.html',
-styleUrls: ['./app.component.scss'],
+selector: 'app-costcube',
+templateUrl: './costcube.component.html',
+styleUrls: ['./costcube.component.scss'],
 })
-export class AppComponent implements AfterViewInit {
+export class CostcubeComponent implements AfterViewInit {
 fromDate: any;
   toDate: any;
   data: any;
   highchart : any
+  newEnteries1: any;
 ngAfterViewInit(): void {
   this.createChartLine();
-  this.createChartColumn();
+
 throw new Error('Method not implemented.');
 }
 newdata: any;
+
 
 // graphData: any;
 arr: any;
@@ -611,17 +614,18 @@ var array1: any[]=[]
 var array2:any[]=[]
 var array3:any[]=[]
 var array4:any[]=[]
-let newbluk=this.graphData['BULK']
+let newbluk=this.graphData
 console.log(newbluk,"newbluk")
 var keysData=Object.keys(newbluk)
-console.log(keysData,"keyssssss")
+// console.log(keysData,"keyssssss")
 
 
-var newEnteries1=keysData.sort((a:any,b:any)=>{
+let newEnteries1=keysData.sort((a:any,b:any)=>{
        var A=a.substr(3,6)
     var B=b.substr(3,6)
           return A-B
 })
+
 
 console.log(newEnteries1,"newEntries")
 
@@ -633,7 +637,7 @@ var sortedobj=Object.keys(newbluk).map((item:any,index)=>{
     var integerBULK=array1.map((itemmss)=>{
     return parseInt(itemmss,10)
     })
-    console.log(integerBULK,"dfdgfgfgf")
+    // console.log(integerBULK,"dfdgfgfgf")
 
     // tl data 
     var newTl=this.graphData['TL']
@@ -645,7 +649,7 @@ var sortedobj=Object.keys(newbluk).map((item:any,index)=>{
      return parseInt(tl,10)
     })
     // ltl data
-    console.log(integerTL,"integerTL")
+    // console.log(integerTL,"integerTL")
     var newltl=this.graphData['LTL']
  var ltldata=Object.keys(newltl).map((itemms:any,index)=>{
 array3.push(newltl[itemms].Ship_Cnt)
@@ -654,7 +658,7 @@ array3.push(newltl[itemms].Ship_Cnt)
 var integerLTL=array3.map((ltl)=>{
 return parseInt(ltl,10)
 })
-console.log(integerLTL,"integerLTL")
+// console.log(integerLTL,"integerLTL")
 // fetch value
 var fetchValue=Object.values(newbluk);
 var fetchpush=fetchValue.map((fechval:any)=>{
@@ -689,7 +693,7 @@ this.highchart=new Chart('chart-line', {
   },
 
   xAxis: {
-    categories:newEnteries1,
+    categories: this.newEnteries1,
       accessibility: {
           Description: 'year '
       }
@@ -748,118 +752,7 @@ this.highchart=new Chart('chart-line', {
 
 
 }
-private createChartColumn(): void {
-  
-    let date = new Date();
-const data: any[] = [];
-var array1: any[]=[]
-var array2:any[]=[]
-var array3:any[]=[]
-var array4:any[]=[]
-let newbluk=this.graphData['BULK']
-console.log(newbluk,"newbluk")
-var keysData=Object.keys(newbluk)
-console.log(keysData,"keyssssss")
 
-
-var newEnteries1=keysData.sort((a:any,b:any)=>{
-       var A=a.substr(3,6)
-    var B=b.substr(3,6)
-          return A-B
-})
-var sortedobj=Object.keys(newbluk).map((item:any,index)=>{
-       array1.push(newbluk[item].Ship_Cnt)
-    })
-           var integerBULK=array1.map((itemmss)=>{
-    return parseInt(itemmss,10)
-    })
-        // tl data 
-    var newTl=this.graphData['TL']
-    let tldata=Object.keys(newTl).map((items:any,index)=>{
-      array2.push(newTl[items].Ship_Cnt)
-       })
-       var integerTL=array2.map((tl)=>{
-     return parseInt(tl,10)
-    })
-    // ltl data
-       var newltl=this.graphData['LTL']
- var ltldata=Object.keys(newltl).map((itemms:any,index)=>{
-array3.push(newltl[itemms].Ship_Cnt)
- })
- var integerLTL=array3.map((ltl)=>{
-return parseInt(ltl,10)
-})
-// fetch value
-var fetchValue=Object.values(newbluk);
-var fetchpush=fetchValue.map((fechval:any)=>{
-       var obj:any={}
-    obj["Ship_cnt"]=fechval.Ship_Cnt;
-        obj["mode"]=fechval.Mode;
-       array4.push(obj)
-})
-    for (let i = 0; i < 10; i++) {
-      date.setDate(new Date().getDate() + i);
-      data.push({
-        name: `${date.getDate()}/${date.getMonth() + 1}`,
-        y: this.getRandomNumber(0, 1000),
-      });
-    }
-    this.highchart=new Chart('chart-column' as any, {
-      chart: {
-        type: 'column',
-        height: 500,
-        width: "700",
-        // margin: "0",
-        overflow: "visible"
-        
-      },
-      title: {
-        text: 'Cube Cost, 2013-2022'
-    },
-      
-      yAxis: {
-        title: {
-            text: 'Ship Count'
-        },
-      
-    },
-      xAxis: {
-        categories:newEnteries1,
-          accessibility: {
-              Description: 'year '
-          }
-      },
-      tooltip: {
-        headerFormat: `<div>Date: {point.key}</div>`,
-        pointFormat: `<div>{series.name}: {point.y}</div>`,
-        shared: true,
-        useHTML: true,
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            enabled: true,
-            
-          },
-        },
-      },
-      series: [{
-        name: 'BULK',
-        data:integerBULK,
-     
-    }, {
-        name: 'TL',
-        data:integerTL,
-      
-    }, {
-        name: 'LTL',
-        data:integerLTL
-      
-    } ],
-    } as any);
-
- 
-  }
 ngOnInit() {
 
 }
@@ -869,3 +762,7 @@ ngOnInit() {
 function records(records: any, arg1: (valid: any) => void) {
     throw new Error('Function not implemented.');
 }
+function el(el: any) {
+  throw new Error('Function not implemented.');
+}
+

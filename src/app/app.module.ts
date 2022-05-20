@@ -3,14 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CpgsComponent } from './components/cpgs/cpgs.component';
+import { DdsComponent } from './components/dds/dds.component';
+import { CostcubeComponent } from './components/costcube/costcube.component';
+import { PuprefbymodeComponent } from './components/puprefbymode/puprefbymode.component';
+import { PiechartsComponent } from './components/piecharts/piecharts.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { HelloComponent } from './hello.component';
+import { MapcomponentsComponent } from './components/mapcomponents/mapcomponents.component';
+import { TriplechartComponent } from './components/triplechart/triplechart.component';
+import { FinalmapComponent } from './components/finalmap/finalmap.component';
+// import { HighchartsChartModule } from "highcharts-angular";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CpgsComponent,
+    DdsComponent,
+    CostcubeComponent,
+    PuprefbymodeComponent,
+    PiechartsComponent,
+    HelloComponent,
+    MapcomponentsComponent,
+    TriplechartComponent,
+    FinalmapComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HighchartsChartModule
+    // HighchartsChartModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
