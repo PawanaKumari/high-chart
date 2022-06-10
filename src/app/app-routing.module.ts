@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { CostcubeComponent } from './components/costcube/costcube.component';
+import { CovidheatComponent } from './components/covidheat/covidheat.component';
 import { CpgsComponent } from './components/cpgs/cpgs.component';
 import { DdsComponent } from './components/dds/dds.component';
 import { FinalmapComponent } from './components/finalmap/finalmap.component';
+import { HeatmapComponent } from './components/heatmap/heatmap.component';
 import { MapcomponentsComponent } from './components/mapcomponents/mapcomponents.component';
 import { PiechartsComponent } from './components/piecharts/piecharts.component';
 import { PuprefbymodeComponent } from './components/puprefbymode/puprefbymode.component';
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path:"app-piecharts",component:PiechartsComponent},
   {path:"app-mapcomponents",component:MapcomponentsComponent},
   {path:"app-triplechart",component:TriplechartComponent},
-  {path:"app-finalmap",component:FinalmapComponent}
+  {path:"app-finalmap",component:FinalmapComponent},
+  {path:"app-heatmap",component:HeatmapComponent},
+  {path:"covidheat",component:CovidheatComponent}
 ];
 
 @NgModule({

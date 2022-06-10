@@ -13,6 +13,8 @@ import { HelloComponent } from './hello.component';
 import { MapcomponentsComponent } from './components/mapcomponents/mapcomponents.component';
 import { TriplechartComponent } from './components/triplechart/triplechart.component';
 import { FinalmapComponent } from './components/finalmap/finalmap.component';
+import { HeatmapComponent } from './components/heatmap/heatmap.component';
+import { CovidheatComponent } from './components/covidheat/covidheat.component';
 // import { HighchartsChartModule } from "highcharts-angular";
 
 @NgModule({
@@ -26,7 +28,9 @@ import { FinalmapComponent } from './components/finalmap/finalmap.component';
     HelloComponent,
     MapcomponentsComponent,
     TriplechartComponent,
-    FinalmapComponent
+    FinalmapComponent,
+    HeatmapComponent,
+    CovidheatComponent
   ],
   imports: [
     BrowserModule,

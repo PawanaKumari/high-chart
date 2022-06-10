@@ -635,8 +635,10 @@ for(let i = 0;i<=length-1;i++){
   subarray.push(slicevalue[i][0])
   
   this.finelarray.push(subarray)
+  
 
 }
+console.log(this.finelarray,"finalarrr")
 
   }
   chartOptions: Options = {
